@@ -41,3 +41,7 @@ scrape_configs:
 run `docker-compose up -d` and the dashboard is up.
 
 Go to localhost:3000 the username and password are admin
+
+## Sharing dashboards with others
+
+see [/dashboard/README.md](./dashboards/README.md)
