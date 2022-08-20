@@ -75,6 +75,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 2,
   "id": null,
+  "iteration": 1661010715985,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -173,7 +174,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "server_counts{type=~\"channels|emojis|members|bots|roles\"}",
+          "expr": "server_counts{type=~\"channels|emojis|members|bots|roles\", job=\"$server\"}",
           "legendFormat": "{{type}}",
           "range": true,
           "refId": "A"
@@ -237,7 +238,7 @@
             "uid": "prometheus"
           },
           "editorMode": "builder",
-          "expr": "server_counts{type=\"messages_minute\"}",
+          "expr": "server_counts{type=\"messages_minute\", job=\"$server\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -301,7 +302,7 @@
             "uid": "prometheus"
           },
           "editorMode": "builder",
-          "expr": "server_counts{type=\"members_active\"}",
+          "expr": "server_counts{type=\"members_active\", job=\"$server\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -393,7 +394,7 @@
             "uid": "prometheus"
           },
           "editorMode": "builder",
-          "expr": "server_counts{type=~\"members|members_online\"}",
+          "expr": "server_counts{type=~\"members|members_online\", job=\"$server\"}",
           "legendFormat": "{{type}}",
           "range": true,
           "refId": "A"
@@ -485,7 +486,7 @@
             "uid": "prometheus"
           },
           "editorMode": "builder",
-          "expr": "server_suggestions_counts{type=~\"suggestions_active|suggestions_denied|suggestions_accepted\"}",
+          "expr": "server_suggestions_counts{type=~\"suggestions_active|suggestions_denied|suggestions_accepted\", job=\"$server\"}",
           "legendFormat": "{{type}}",
           "range": true,
           "refId": "A"
@@ -504,7 +505,26 @@
     "Discord"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {},
+        "definition": "label_values(job)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "server",
+        "options": [],
+        "query": {
+          "query": "label_values(job)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -514,6 +534,6 @@
   "timezone": "browser",
   "title": "Dashy Dashboard",
   "uid": "bh9NPlmVk",
-  "version": 11,
+  "version": 5,
   "weekStart": ""
 }
